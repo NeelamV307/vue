@@ -1,0 +1,33 @@
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js">
+</script>
+<style>
+.red{
+background-color:red;
+}
+
+.blue{
+background-color: blue;
+}
+.pink{
+background-color: pink;
+}
+</style>
+</head>
+
+<body>
+<div id="app">
+<input type="text" v-on:input="cssClass= $event.target.value">
+<p v-bind:class="cssClass">Class:{{cssClass}}</p>
+</div>
+
+<script>
+new Vue({
+el: '#app',
+data:{ cssClass:''}
+});
+
+</script>
+</body>
+</html>
