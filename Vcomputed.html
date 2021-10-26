@@ -1,0 +1,31 @@
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js">
+</script>
+</head>
+<body>
+<div id="app">
+<button v-on:click="increment">Increment</button>
+<p> Counter:{{counter}}</p>
+<p> Clicks:{{click}}</p>
+</div>
+
+<script>
+new Vue({
+el: '#app',
+data:{counter:0,
+click:0
+},
+
+methods:{ increment(){
+
+this.click++;
+}},
+
+computed:{ counter(){
+return this.click*5;
+}}
+});
+</script>
+</body>
+</html>
