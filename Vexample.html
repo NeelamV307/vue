@@ -1,0 +1,36 @@
+<html>
+<head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js">
+</script>
+<style>
+.user{
+border: 1px solid #ccc;
+background-color: #white;
+padding:20px;
+}
+</style>
+</head>
+<body>
+<div id="app">
+<p>{{title}}</p>
+<hr>
+<div class="user" v-for="user in users">
+<p>Username: {{user.username}}</p>
+</div>
+</div>
+<script>
+new Vue({
+el:'#app',
+data:{ title:'heellooo',
+users:[
+{username:'neelam'},
+{username:'neta'},
+{username:'namu'},
+{username:'ella'}
+
+]
+}
+});
+</script>
+</body>
+</html>
