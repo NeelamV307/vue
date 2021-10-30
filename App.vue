@@ -1,7 +1,7 @@
 <template>
     <div class="container">
      <Header title="Task Traker"/>
-        <Tasks v-bind:tasks="tasks" />
+        <Tasks @delete-task="deleteTask" v-bind:tasks="tasks" />
     </div>
 </template>
 
@@ -16,8 +16,16 @@ export default {
         },
         data() {
             return {
-                tasks: []
+                tasks: [],
             }
+        },
+
+        methods: {
+            deleteTask(id) {
+                if (confirm('are you sure?')) {
+                    this.tasks = this.tasks.filter((task) => task.id !== id)
+                }
+            },
         },
         created() {
             this.tasks = [
@@ -43,8 +51,8 @@ export default {
                     id: 4,
                     text: 'Dentist Apntmnt',
                     day: '3rd Nov at 12:30pm',
-                    reminder: true,
-                },
+                    reminder: false,
+                }
 
             ]
         },
