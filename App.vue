@@ -1,30 +1,43 @@
 <template>
     <div class="container">
      <Header title="Task Traker"/>
-        <Tasks @delete-task="deleteTask" v-bind:tasks="tasks" />
+     <div>
+         <AddTask @add-task="addTask"></AddTask>
+
+     </div>
+         <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" v-bind:tasks="tasks" />
     </div>
 </template>
 
 <script>
     import Header from './components/Header'
     import Tasks from './components/Tasks'
+    import AddTask from './components/AddTask'
 export default {
   name: 'App',
   components: {
       Header,
-      Tasks
+      Tasks,
+      AddTask
         },
         data() {
             return {
                 tasks: [],
+                showAddTask: false
             }
         },
 
         methods: {
+            addTask(task) {
+                this.tasks=[...this.tasks,task]
+            },
             deleteTask(id) {
                 if (confirm('are you sure?')) {
                     this.tasks = this.tasks.filter((task) => task.id !== id)
                 }
+            },
+            toggleReminder(id) {
+                this.tasks = this.tasks.map((task) => task.id === id ? { ...task, reminder: !task.reminder }:task)
             },
         },
         created() {
