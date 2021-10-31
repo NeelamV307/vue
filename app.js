@@ -1,28 +1,28 @@
-const app= Vue.createApp({
-	
-	data(){
-	return{
-		firstName:'raj',
-		lastName:'vazirani',
-		email:'nee@gmail.com',
-	
-		pic:'C:\Users\91969\OneDrive\Pictures\shop\pic-2.png',
-	}
-	},
-	
-	methods:{
-	async	getuser(){
-			const res= await fetch('https:randomuser.me/api')
-			const {results}= await res.json()
-			//console.log(results);
-			this.firstName= results[0].name.first
-			this.lastName=results[0].name.last
-			this.email=results[0].email
-			
-			this.pic= results[0].pic.large
-			
-			},
-	},
-})
+Vue.createApp({
+  data() {
+    return {
+      goals: [],
+      enteredValue: ''
+    };
+  },
+  methods: {
+    addGoal() {
+      this.goals.push(this.enteredValue);
+      this.enteredValue = '';
+    }
+  }
+}).mount('#app');
 
-app.mount('#app')
+// const buttonEl = document.querySelector('button');
+// const inputEl = document.querySelector('input');
+// const listEl = document.querySelector('ul');
+
+// function addGoal() {
+//   const enteredValue = inputEl.value;
+//   const listItemEl = document.createElement('li');
+//   listItemEl.textContent = enteredValue;
+//   listEl.appendChild(listItemEl);
+//   inputEl.value = '';
+// }
+
+// buttonEl.addEventListener('click', addGoal);
